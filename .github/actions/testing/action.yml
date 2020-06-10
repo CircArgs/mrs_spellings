@@ -1,0 +1,10 @@
+name: On Push
+description: run pytest
+on:
+  push:
+    branches:
+      - master
+
+runs:
+  using: "docker"
+  image: "Dockerfile"

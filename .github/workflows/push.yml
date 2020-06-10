@@ -1,0 +1,23 @@
+name: test
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    name: Run Pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out code...
+        id: checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: testing
+        id: testing
+        uses: ./.github/actions/testing
+        env:
+          CODECOV_TOKEN: "2ca4fb20-efb3-4aba-9e6e-b75434bc0eda"
+        #   GITPASS: ${{ secrets.GITPASS }}
+        #   EMAIL: ${{ secrets.EMAIL }}
