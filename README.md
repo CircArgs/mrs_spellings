@@ -83,3 +83,42 @@ In [10]: " ".join(MrsWord("Hello").qwerty_swap())
 Out[10]: 'Helko Hdllo Yello He,lo Helll Hellp Hel,o Nello Heklo Hrllo H3llo Gello Heolo He:lo Helli Hell9 Heloo Hel:o Jello Hwllo'
 ```
 
+# Methods
+
+## deletion
+```python
+Signature: MrsWord.delete(number_deletes=1)
+Docstring:
+delete some number `number_deletes` from this word
+
+Args:
+    number_deletes (int): number of deletions to perform
+
+Returns:
+    MrsSpellings (set): all possible misspellings that form as a result of `number_deletes` deletions
+```
+
+## swapping
+```python
+Signature: MrsWord.swap()
+Docstring:
+swap some consecutive characters
+
+Args:
+
+Returns:
+    MrsSpellings (set): all possible misspellings that form as a result of swapping consecutive characters
+```
+
+## qwerty distance (taxi-cab) based swapping
+```python
+Signature: MrsWord.qwerty_swap(max_distance=1)
+Docstring:
+swap characters with their qwerty neighbors
+
+Args:
+    max_distance (int): the max distance (taxi-cab) of keys on the keyboard to swap
+                        e.g. `max_distance=1` then "g" could become one of ["t", "f", "h", "b"]
+Returns:
+    MrsSpellings (set): all possible misspellings that form as a result of swapping characters with qwerty neighbors
+```
