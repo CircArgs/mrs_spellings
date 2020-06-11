@@ -9,25 +9,27 @@ try:
 except ImportError:
     from distutils.core import setup
 
-readme = ''
+readme = ""
 
 setup(
     long_description=readme,
-    name='mrs_spellings',
-    version='0.3.0',
-    description='a micro utility for generating plausible misspellings',
-    python_requires='==3.*,>=3.6.0',
-    author='CircArgs',
-    author_email='quebecname@gmail.com',
-    license='MIT',
-    packages=['mrs_spellings', 'mrs_spellings.qwerty_caches'],
+    name="mrs_spellings",
+    version="0.3.0",
+    description="a micro utility for generating plausible misspellings",
+    python_requires="==3.*,>=3.6.0",
+    author="CircArgs",
+    author_email="quebecname@gmail.com",
+    license="MIT",
+    packages=["mrs_spellings", "mrs_spellings.qwerty_caches"],
     package_dir={"": "."},
     package_data={"mrs_spellings.qwerty_caches": ["*.ipynb"]},
     install_requires=[],
     extras_require={
         "dev": [
-            "dephell==0.*,>=0.8.3", "pylint==2.*,>=2.5.2",
-            "pytest==3.*,>=3.0.0", "pytest-cov==2.*,>=2.4.0"
+            "dephell==0.*,>=0.8.3",
+            "pylint==2.*,>=2.5.2",
+            "pytest==3.*,>=3.0.0",
+            "pytest-cov==2.*,>=2.4.0",
         ]
     },
 )
