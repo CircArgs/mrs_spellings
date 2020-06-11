@@ -9,7 +9,8 @@ try:
 except ImportError:
     from distutils.core import setup
 
-readme = ""
+with open("README.md") as f:
+    readme=f.read()
 
 setup(
     long_description=readme,
