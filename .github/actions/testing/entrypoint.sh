@@ -7,7 +7,7 @@ source $HOME/.poetry/env
 echo "Poetry install"
 poetry install
 echo "Running pytest"
-poetry run python -m pytest --cov-report=xml --cov=target_statistic_encoding tests/
+poetry run python -m pytest --cov-report=xml --cov=mrs_spellings tests/
 bash <(curl -s https://codecov.io/bash)
 # poetry run python -m pytest --cov=. >> $GITHUB_WORKSPACE/coverage_summary
 # echo "Formatting Repo Coverage Badge"
