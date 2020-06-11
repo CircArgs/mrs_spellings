@@ -1,5 +1,5 @@
 # MrS SpELliNgS
-a micro utility to generate plausible misspellings
+a micro utility to procedurally generate plausible misspellings
 
 <div align="center">
   <a href="https://badge.fury.io/py/mrs-spellings"><img src="https://badge.fury.io/py/mrs-spellings.svg" alt="PyPI version" height="18"></a>
