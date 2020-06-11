@@ -24,9 +24,10 @@ a micro utility to generate plausible misspellings
 
 `python -m pip install git+https://github.com/CircArgs/mrs_spellings.git`
 
-# What?
+# Use Cases
 
-Use this library to generate potential misspellings of words. This is useful for natural language processing tasks that require a quick substition during cleaning.
+- Generate misspellings to replace during the text cleaning process with low overhead
+- Replace words with their potential misspellings as an augmentation
 
 # Usage
 
