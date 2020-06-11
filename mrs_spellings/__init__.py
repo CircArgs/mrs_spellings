@@ -1,59 +1,78 @@
-__package__="mrs_spellings"
+__package__ = "mrs_spellings"
 
-class Mrs_Speller:
-    def __init__(self, n_swaps=1, max_deletes=1, minimal_space=False):
-        self.n_swaps=n_swaps
-        self.max_deletes=max_deletes
-        self.minimal_space=minimal_space
+from .qwerty_caches.closest_dists_cache import qwerty_closest_dists
 
-    def delete(self, word, number_deletes=1):
-        #TODO: preallocate ret
-        ret=[]
-        for i in range(len(word)-(number_deletes-1)):
-            temp= list(word)
-            del temp[i:i+number_deletes]
-            ret.append("".join(temp))
 
-        return ret
+class MrsWord(str):
+    def __new__(cls, word):
+        if isinstance(word, MrsWord):
+            return word
+        obj = str.__new__(cls, word)
+        return obj
 
-    def swap(self, word):
-        #TODO: preallocate ret
+    def delete(self, number_deletes=1):
+        ret = [None] * (len(self) - (number_deletes - 1))
+        for i in range(len(self) - (number_deletes - 1)):
+            temp = list(self)
+            del temp[i : i + number_deletes]
+            ret[i] = MrsWord("".join(temp))
+
+        return MrsSpellings(set(ret))
+
+    def swap(self):
+        ret = [None] * (len(self) - 1)
+        for i in range(len(self) - 1):
+            temp = list(self)
+            t = temp[i]
+            temp[i] = temp[i + 1]
+            temp[i + 1] = t
+            ret[i] = MrsWord("".join(temp))
+        return MrsSpellings(set(ret))
+
+    def qwerty_swap(self, max_distance=1):
         ret = []
-        for i in range(len(word)-1):
-            temp=list(word)
-            t=temp[i]
-            temp[i]=temp[i+1]
-            temp[i+1]=t
-            ret.append("".join(temp))
+        for li, l in enumerate(self):
+            for crop in qwerty_closest_dists[l][:max_distance]:
+                temp_ret = [None] * len(crop)
+                for si, sl in enumerate(crop):
+                    temp = list(self)
+                    temp[li] = sl
+                    temp_ret[si] = MrsWord("".join(temp))
+                ret += temp_ret
+        return MrsSpellings(set(ret))
+
+
+class MrsSpellings(set):
+    def __new__(cls, spellings):
+        obj = set.__new__(cls, spellings)
+        return obj
+
+    def delete(self, number_deletes=1):
+        ret = None
+        for word in self:
+            temp = word.delete(number_deletes)
+            if ret is None:
+                ret = temp
+            else:
+                ret = ret.union(temp)
         return ret
 
-    def __max_space_generate(self, word):
-        ret=[]
-        for i in range(self.max_deletes):
-            ret+=self.delete(word, i)
+    def swap(self):
+        ret = None
+        for word in self:
+            temp = word.swap()
+            if ret is None:
+                ret = temp
+            else:
+                ret = ret.union(temp)
+        return ret
 
-        swapped = self.swap(word)
-        ret+=swapped
-        for w in swapped:
-            ret+=self.delete(w)
-        ret.append(word)
-
-        return list(set(ret))
-
-    def __min_space_generate(self, word):
-        ret=set()
-        for i in range(self.max_deletes):
-            ret.union(set(self.delete(word, i)))
-
-        swapped = self.swap(word)
-        retret.union(set(swapped))
-        for w in swapped:
-            ret.union(set(self.delete(w)))
-        ret.update(word)
-
-        return list(ret)
-
-    def generate(self, word):
-        if self.minimal_space:
-            return self.__min_space_generate(word)
-        return self.__max_space_generate(word)
+    def qwerty_swap(self, max_distance=1):
+        ret = None
+        for word in self:
+            temp = word.qwerty_swap(max_distance)
+            if ret is None:
+                ret = temp
+            else:
+                ret = ret.union(temp)
+        return ret
