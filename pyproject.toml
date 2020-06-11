@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mrs_spellings"
-version = "0.1.1"
+version = "0.2.0"
 description = "a micro utility for generating plausible misspellings"
 authors = ["CircArgs <quebecname@gmail.com>"]
 license = "MIT"
