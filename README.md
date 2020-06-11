@@ -30,7 +30,7 @@ a micro utility to procedurally generate plausible misspellings
 
 ### from pypi
 
-`pip install mrs_spellings`
+`pip install mrs-spellings`
 
 ### from source
 
