@@ -141,3 +141,35 @@ Returns:
     MrsSpellings (set): all possible misspellings that form as a result of swapping characters with qwerty neighbors
 
 ```
+
+### what is qwerty distance?
+
+Qwerty distance is the distance between keys on the typical keyboard. For the purposes of this package, the following assumptions are made:
+
+- each row has half a key offset
+- the l1 distance is a good estimate of the natural travel distance between keys on the keyboard
+- the shift key can add distance by virtue of requiring a hold-down
+
+Here is an example of the results of these assumptions. The closest keys grouped by equal distance (groups in ascending order to furthest distance) to the `g` key are:
+```python
+[['f', 'h'],
+ ['t', 'y', 'v', 'b'],
+ ['6', 'd', 'j'],
+ ['r', 'u', 'c', 'n'],
+ ['^', '5', '7', 's', 'k'],
+ ['e', 'i', 'x', 'm'],
+ ['%', '&', '4', '8', 'a', 'l'],
+ ['w', 'o', 'z', '<'],
+ ['$', '*', '3', '9', ':'],
+ ['q', 'p', ','],
+ ['#', '(', '2', '0', ';'],
+ ['[', '>'],
+ ['@', ')', '1', '-', '"'],
+ [']', '.'],
+ ['!', '_', '`', '=', "'"],
+ ['\\', '?'],
+ ['~', '+', '{'],
+ ['/'],
+ ['}'],
+ ['|']]
+ ```
