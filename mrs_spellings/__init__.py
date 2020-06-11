@@ -47,6 +47,10 @@ class MrsSpellings(set):
         obj = set.__new__(cls, spellings)
         return obj
 
+
+    def to_list(self):
+        return list(self)
+
     def delete(self, number_deletes=1):
         ret = None
         for word in self:
