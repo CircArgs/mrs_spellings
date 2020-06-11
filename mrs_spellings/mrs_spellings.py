@@ -2,15 +2,16 @@ from .qwerty_caches.closest_dists_cache import qwerty_closest_dists
 
 
 class MrsWord(str):
+    '''Create a new word on which to apply misspelling transforms
+
+    Args:
+        word (str): a string you wish to generate misspellings of
+
+    Returns:
+        MrsWord (str)
+    '''
     def __new__(cls, word):
-        '''Create a new word on which to apply misspelling transforms
 
-        Args:
-            word (str): a string you wish to generate misspellings of
-
-        Returns:
-            MrsWord (str)
-        '''
         if isinstance(word, MrsWord):
             return word
         obj = str.__new__(cls, word)
@@ -77,15 +78,16 @@ class MrsWord(str):
 
 
 class MrsSpellings(set):
+    '''Create a new set of words on which to apply misspelling transforms
+
+    Args:
+        spellings (iterable): an iterable of string instances (Note: MrsWord is a valid string instance)
+
+    Returns:
+        MrsWord (str)
+    '''
     def __new__(cls, spellings):
-        '''Create a new set of words on which to apply misspelling transforms
 
-        Args:
-            spellings (iterable): an iterable of string instances (Note: MrsWord is a valid string instance)
-
-        Returns:
-            MrsWord (str)
-        '''
         obj = set.__new__(cls, [MrsWord(w) for w in spellings])
         return obj
 
