@@ -24,6 +24,7 @@ a micro utility to procedurally generate plausible misspellings
   * [deletion](#deletion)
   * [swapping](#swapping)
   * [qwerty distance (taxi-cab) based swapping](#qwerty-distance-taxi-cab-based-swapping)
+  * [What is QWERTY distance?](#what-is-qwerty-distance)
 ---
 # Install
 
