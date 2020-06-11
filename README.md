@@ -13,7 +13,18 @@ a micro utility to procedurally generate plausible misspellings
 </div>
 
 ---
-
+# [Table of Contents](#table-of-contents)
+- [MrS SpELliNgS](#mrs-spellings)
+- [Install](#install)
+    + [from pypi](#from-pypi)
+    + [from source](#from-source)
+- [Use Cases](#use-cases)
+- [Usage](#usage)
+- [Methods](#methods)
+  * [deletion](#deletion)
+  * [swapping](#swapping)
+  * [qwerty distance (taxi-cab) based swapping](#qwerty-distance--taxi-cab--based-swapping)
+---
 # Install
 
 ### from pypi
