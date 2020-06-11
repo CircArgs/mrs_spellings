@@ -26,6 +26,9 @@ def test_qwerty_swap():
         "Jello",
     }
 
+def test_to_list():
+    word = MrsWord("Hello")
+    assert sorted(word.swap().to_list()) == sorted(["eHllo", "Hlelo", "Hello", "Helol"])
 
 def test_swap_swap_spellings():
     word = MrsWord("Hello")
