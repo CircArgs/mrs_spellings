@@ -23,7 +23,7 @@ a micro utility to procedurally generate plausible misspellings
 - [Methods](#methods)
   * [deletion](#deletion)
   * [swapping](#swapping)
-  * [qwerty distance (taxi-cab) based swapping](#qwerty-distance--taxi-cab--based-swapping)
+  * [qwerty distance (taxi-cab) based swapping](#qwerty-distance-taxi-cab-based-swapping)
 ---
 # Install
 
