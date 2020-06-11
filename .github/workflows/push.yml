@@ -18,6 +18,6 @@ jobs:
         id: testing
         uses: ./.github/actions/testing
         env:
-          CODECOV_TOKEN: "2ca4fb20-efb3-4aba-9e6e-b75434bc0eda"
+          CODECOV_TOKEN: "6213863a-d57e-4852-a36a-85ff6f7d0ffb"
         #   GITPASS: ${{ secrets.GITPASS }}
         #   EMAIL: ${{ secrets.EMAIL }}
