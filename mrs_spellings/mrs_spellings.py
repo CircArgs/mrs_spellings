@@ -30,11 +30,13 @@ class MrsWord(str):
     def qwerty_swap(self, max_distance=1):
         ret = []
         for li, l in enumerate(self):
+            is_upper=l.isupper()
+            l=l.lower()
             for crop in qwerty_closest_dists[l][:max_distance]:
                 temp_ret = [None] * len(crop)
                 for si, sl in enumerate(crop):
                     temp = list(self)
-                    temp[li] = sl
+                    temp[li] = sl if not is_upper else sl.upper()
                     temp_ret[si] = MrsWord("".join(temp))
                 ret += temp_ret
         return MrsSpellings(set(ret))
