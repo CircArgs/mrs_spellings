@@ -14,7 +14,7 @@ readme = ""
 setup(
     long_description=readme,
     name="mrs_spellings",
-    version="0.3.0",
+    version="1.0.0",
     description="a micro utility for generating plausible misspellings",
     python_requires="==3.*,>=3.6.0",
     author="CircArgs",
