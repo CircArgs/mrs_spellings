@@ -128,11 +128,16 @@ Returns:
 ```python
 Signature: MrsWord.qwerty_swap(max_distance=1)
 Docstring:
+
 swap characters with their qwerty neighbors
 
 Args:
     max_distance (int): the max distance (taxi-cab) of keys on the keyboard to swap
-                        e.g. `max_distance=1` then "g" could become one of ["t", "f", "h", "b"]
+                        e.g. `max_distance=1` then "g" could become one of ["f", "h"]
+                            `max_distance=2` then "g" could become one of ['f', 'h', 't', 'y', 'v', 'b']
+                            Note: The number of swaps possible increases with distance however the increase is not always uniform.
+                            For example, the 3rd set of keys from g is ['6', 'd', 'j'] while the second was ['t', 'y', 'v', 'b']
 Returns:
     MrsSpellings (set): all possible misspellings that form as a result of swapping characters with qwerty neighbors
+
 ```
