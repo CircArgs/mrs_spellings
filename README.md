@@ -45,6 +45,9 @@ a micro utility to procedurally generate plausible misspellings
 # Usage
 
 There are 3 primary methods currently supported:
+  * [deletion](#deletion)
+  * [swapping](#swapping)
+  * [qwerty distance (taxi-cab) based swapping](#qwerty-distance-taxi-cab-based-swapping)
 ```python
 In [1]: from mrs_spellings import MrsWord, MrsSpellings                                                                                                                                                            
 #methods return MrsSpellings
