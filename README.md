@@ -27,7 +27,9 @@ a micro utility to generate plausible misspellings
 # Use Cases
 
 - Generate misspellings to replace during the text cleaning process with low overhead
-- Replace words with their potential misspellings as an augmentation
+- Replace words with their potential misspellings as an augmentation during
+  - training to make your model less susceptible to misspellings
+  - during test time as part of TTA
 
 # Usage
 
