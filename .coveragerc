@@ -1,0 +1,10 @@
+[run]
+branch = True
+omit =
+    */mrs_spellings/qwerty_caches/*
+
+[report]
+ignore_errors = True
+omit =
+    */mrs_spellings/qwerty_caches/*
+    */tests/*
