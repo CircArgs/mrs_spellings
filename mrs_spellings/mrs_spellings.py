@@ -28,13 +28,13 @@ class MrsWord(str):
         Returns:
             MrsSpellings (set): all possible misspellings that form as a result of `number_deletes` deletions
         """
-        ret = [None] * (len(self) - (number_deletes - 1))
+        ret = set()
         for i in range(len(self) - (number_deletes - 1)):
             temp = list(self)
             del temp[i : i + number_deletes]
-            ret[i] = MrsWord("".join(temp))
+            ret.add(MrsWord("".join(temp)))
 
-        return MrsSpellings(set(ret))
+        return MrsSpellings(ret)
 
     def swap(self):
         """
@@ -45,14 +45,14 @@ class MrsWord(str):
         Returns:
             MrsSpellings (set): all possible misspellings that form as a result of swapping consecutive characters
         """
-        ret = [None] * (len(self) - 1)
+        ret = set()
         for i in range(len(self) - 1):
             temp = list(self)
             t = temp[i]
             temp[i] = temp[i + 1]
             temp[i + 1] = t
-            ret[i] = MrsWord("".join(temp))
-        return MrsSpellings(set(ret))
+            ret.add(MrsWord("".join(temp)))
+        return MrsSpellings(ret)
 
     def qwerty_swap(self, max_distance=1):
         """
@@ -67,18 +67,16 @@ class MrsWord(str):
         Returns:
             MrsSpellings (set): all possible misspellings that form as a result of swapping characters with qwerty neighbors
         """
-        ret = []
+        ret = set()
         for li, l in enumerate(self):
             is_upper = l.isupper()
             l = l.lower()
             for crop in qwerty_closest_dists[l][:max_distance]:
-                temp_ret = [None] * len(crop)
                 for si, sl in enumerate(crop):
                     temp = list(self)
                     temp[li] = sl if not is_upper else sl.upper()
-                    temp_ret[si] = MrsWord("".join(temp))
-                ret += temp_ret
-        return MrsSpellings(set(ret))
+                    ret.add(MrsWord("".join(temp)))
+        return MrsSpellings(ret)
 
 
 class MrsSpellings(set):
