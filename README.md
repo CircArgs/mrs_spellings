@@ -24,6 +24,7 @@ a micro utility to procedurally generate plausible misspellings
   * [deletion](#deletion)
   * [swapping](#swapping)
   * [qwerty distance (taxi-cab) based swapping](#qwerty-distance-taxi-cab-based-swapping)
+  * [What is QWERTY distance?](#what-is-qwerty-distance)
 ---
 # Install
 
@@ -128,11 +129,48 @@ Returns:
 ```python
 Signature: MrsWord.qwerty_swap(max_distance=1)
 Docstring:
+
 swap characters with their qwerty neighbors
 
 Args:
     max_distance (int): the max distance (taxi-cab) of keys on the keyboard to swap
-                        e.g. `max_distance=1` then "g" could become one of ["t", "f", "h", "b"]
+                        e.g. `max_distance=1` then "g" could become one of ["f", "h"]
+                            `max_distance=2` then "g" could become one of ['f', 'h', 't', 'y', 'v', 'b']
+                            Note: The number of swaps possible increases with distance however the increase is not always uniform.
+                            For example, the 3rd set of keys from g is ['6', 'd', 'j'] while the second was ['t', 'y', 'v', 'b']
 Returns:
     MrsSpellings (set): all possible misspellings that form as a result of swapping characters with qwerty neighbors
+
 ```
+
+### what is qwerty distance?
+
+Qwerty distance is the distance between keys on the typical keyboard. For the purposes of this package, the following assumptions are made:
+
+- each row has half a key offset
+- the l1 distance is a good estimate of the natural travel distance between keys on the keyboard
+- the shift key can add distance by virtue of requiring a hold-down
+
+Here is an example of the results of these assumptions. The closest keys grouped by equal distance (groups in ascending order to furthest distance) to the `g` key are:
+```python
+[['f', 'h'],
+ ['t', 'y', 'v', 'b'],
+ ['6', 'd', 'j'],
+ ['r', 'u', 'c', 'n'],
+ ['^', '5', '7', 's', 'k'],
+ ['e', 'i', 'x', 'm'],
+ ['%', '&', '4', '8', 'a', 'l'],
+ ['w', 'o', 'z', '<'],
+ ['$', '*', '3', '9', ':'],
+ ['q', 'p', ','],
+ ['#', '(', '2', '0', ';'],
+ ['[', '>'],
+ ['@', ')', '1', '-', '"'],
+ [']', '.'],
+ ['!', '_', '`', '=', "'"],
+ ['\\', '?'],
+ ['~', '+', '{'],
+ ['/'],
+ ['}'],
+ ['|']]
+ ```
