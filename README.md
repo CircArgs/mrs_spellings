@@ -42,6 +42,7 @@ a micro utility to procedurally generate plausible misspellings
 - Replace words with their potential misspellings as an augmentation during
   - training to make your model less susceptible to misspellings
   - during test time as part of TTA
+- Supplement an existing solution for out-of-vocabulary words/ words that do not appear in an existing replacement dictionary
 
 # Usage
 
