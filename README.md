@@ -1,4 +1,4 @@
-# mrs_spellings
+# MrS SpELliNgS
 a micro utility to generate plausible misspellings
 
 <div align="center">
@@ -62,11 +62,21 @@ Out[5]:
  'hlol',
  'lelo'}
  
-# MrsSpellings work as sets
-In [6]: MrsWord("hello").swap().union(MrsWord("world").delete())                                                                                                                        
-Out[6]: {'ehllo', 'hello', 'helol', 'hlelo', 'orld', 'wold', 'word', 'worl', 'wrld'}
+# MrsWord is a string
+In [6]: MrsWord("Hello") + " " + MrsWord("World")                                                                                                                                                        
+Out[6]: 'Hello World'
 
-In [7]: MrsWord("hello").delete(1)-MrsWord("hello").delete(1)                                                                                                                                        
-Out[7]: set()
+In [7]: MrsWord("Hello {}").format("world")                                                                                                                                                      
+Out[7]: 'Hello world'
+
+# MrsSpellings work as sets
+In [8]: MrsWord("hello").swap().union(MrsWord("world").delete())                                                                                                                        
+Out[8]: {'ehllo', 'hello', 'helol', 'hlelo', 'orld', 'wold', 'word', 'worl', 'wrld'}
+
+In [9]: MrsWord("hello").delete(1)-MrsWord("hello").delete(1)                                                                                                                                        
+Out[9]: set()
+
+In [10]: " ".join(MrsWord("Hello").qwerty_swap())                                                                                                                                                     
+Out[10]: 'Helko Hdllo Yello He,lo Helll Hellp Hel,o Nello Heklo Hrllo H3llo Gello Heolo He:lo Helli Hell9 Heloo Hel:o Jello Hwllo'
 ```
 
