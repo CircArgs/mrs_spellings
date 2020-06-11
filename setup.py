@@ -14,6 +14,7 @@ with open("README.md") as f:
 
 setup(
     long_description=readme,
+    url="https://github.com/CircArgs/mrs_spellings"
     name="mrs_spellings",
     version="1.0.0",
     description="a micro utility for generating plausible misspellings",
